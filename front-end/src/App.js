@@ -1,13 +1,15 @@
 import React from 'react';
-import { BrowserRouter as Router } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import Listagem from './components/Listagem';
+import Cadastro from './components/Cadastro';
 
 function App() {
   return (
     <Router>
-      <div className="App">
-        <Listagem />
-      </div>
+      <Switch>
+        <Route path="/cadastro" component={Cadastro} />
+        <Route path="/" component={Listagem} />
+      </Switch>
     </Router>
   );
 }
