@@ -1,5 +1,4 @@
 import React from "react";
-import { Link } from "react-router-dom";
 import { apiQueixas, apiDoencas } from "../data";
 import '../stylesheet/style.css';
 
@@ -10,7 +9,7 @@ class Cadastro extends React.Component {
       queixasApi: [],
       doencasApi: [],
       queixa: '',
-      doenca: '',
+      doencas: [],
       historico: '',
       isLoaded: false,
     };
@@ -21,20 +20,38 @@ class Cadastro extends React.Component {
     apiQueixas().then((json) => {
       this.setState({
         isLoaded: true,
-        queixasApi: json["data"],
+        queixasApi: json.data,
       });
     });
     apiDoencas().then((json) => {
       this.setState({
         isLoaded: true,
-        doencasApi: json["data"],
+        doencasApi: json.data,
       });
     });
   }
 
   handleChange(event) {
-    console.log(event.target.name)
-    this.setState({ [event.target.name]: event.target.value });
+    const { name, value } = event.target;
+    if(name === "doencas") {
+      this.setState((state) => (
+        {...state, doencas: [...state.doencas, Number(value)]}
+      ))
+    } else {
+      this.setState({ [name]: value });
+    }
+  }
+
+  submit (e) {
+    e.preventDefault(); // função para não carregar as infos
+    const { queixa, doencas, historico } = this.state;
+    const requisicao = {
+      queixa,
+      doencas,
+      historico,
+    };
+
+    console.log(requisicao)
   }
 
   render() {
@@ -43,22 +60,23 @@ class Cadastro extends React.Component {
     return (
       <div className="corpo cadastro">
         <p className="anamnese">Anamnese</p>
-        <form className="form">
+        <form className="form" onSubmit={(e) => this.submit(e)}>
           <label className="queixa" htmlFor="queixa">Queixa Principal</label>
-          <select name="queixa" id="queixa" onChange={(event) => this.handleChange(event)}>
+          <select name="queixa" id="queixa" required onChange={(event) => this.handleChange(event)}>
             <option value="" disabled selected>Selecione...</option>
             {queixasApi.map((item) => (
-              <option key={item.id} value={item.label}>{item.label}</option>
+              <option required key={item.id} value={item.id}>{item.label}</option>
             ))}
           </select>
           <label className="doenca" htmlFor="doenca">Doenças Adulto</label>
-          <select name="doenca" id="doenca" onChange={(event) => this.handleChange(event)}>
-            <option value="" disabled selected>Selecione...</option>
+          <select name="doencas" id="doenca" required onChange={(event) => this.handleChange(event)}>
+            <option value="" required disabled selected>Selecione...</option>
             {doencasApi.map((item) => (
-              <option key={item.id} value={item.label}>{item.label}</option>
+              <option key={item.id} value={item.id}>{item.label}</option>
             ))}
           </select>
           <p className="selecionados">Selecionados:</p>
+            <button>{this.handleChange}</button>
           <label className="historico" htmlFor="historico">Histórico da Moléstia</label>
           <input
             className="input-historico"
@@ -67,12 +85,10 @@ class Cadastro extends React.Component {
             placeholder="Digite..."
             maxLength="1000"
             minLength="10"
-            required="required"
+            required
             onChange={(event) => this.handleChange(event)}
           />
-          <Link to="/">
-            <button className="btn" type="button">Salvar</button>
-          </Link>
+          <input className="btn" type="submit" value="Salvar"/>
         </form>
       </div>
     );
