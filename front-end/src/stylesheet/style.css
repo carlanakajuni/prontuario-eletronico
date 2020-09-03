@@ -1,0 +1,76 @@
+.corpo {
+  background-color: #F2F2F2;
+  align-items: center;
+  padding: 10px;
+  max-width: 250px;
+  height: 600px;
+}
+
+header {
+  margin: 15px;
+}
+
+.text-none {
+  color: #5E5E5E;
+  font-family: Noto Sans, sans-serif;
+  font-weight: initial;
+}
+
+.btn {
+  background-color: #D4394E;
+  color: #F8ECF0;
+  height: 50px;
+  font-family: Noto Sans, sans-serif;
+  font-weight: 590;
+  cursor: pointer;
+  border-radius: 0.3em;
+  text-align: center;
+  width: 250px;
+}
+
+.anamnese {
+  background-color: #B3DDDD;
+  font-family: Noto Sans, sans-serif;
+  max-height: 28px;
+  display: flex;
+  padding: 5px 10px;
+  border-radius: 0.3em;
+}
+
+.form {
+  background-color: #FFFFFF;
+  height: 500px;
+}
+
+.input-historico {
+  border: transparent;
+  background: #F2F2F2;
+  height: 80px;
+  width: 230px;
+  margin: 5px;
+}
+
+.queixa, .doenca, .selecionados, .historico{
+  font-size: smaller;
+  font-family: Noto Sans, sans-serif;
+  margin: 5px;
+}
+
+select {
+  /* Select Reset */
+  border: transparent;
+  background: #F2F2F2;
+  border-radius: 0.3em;
+  margin:5px;
+  display:block;
+  width: 95%;
+  cursor: pointer;
+  color: gray;
+  /* custom select appearance */  
+  padding: 12px 55px 15px 15px;
+  font-size: 14px;
+}
+
+/* -webkit-appearance: none;
+-moz-appearance: none;
+outline: none; */

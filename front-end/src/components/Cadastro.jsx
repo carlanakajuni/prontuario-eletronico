@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { apiQueixas, apiDoencas } from "../data";
+import '../stylesheet/style.css';
 
 class Cadastro extends React.Component {
   constructor(props) {
@@ -40,35 +41,39 @@ class Cadastro extends React.Component {
     const { queixasApi, doencasApi } = this.state;
 
     return (
-      <div>
-        <h3>Anamnese</h3>
-        <label htmlFor="queixa">Queixa Principal</label>
-        <select name="queixa" id="queixa" onChange={(event) => this.handleChange(event)}>
-          <option value="select">Selecione</option>
-          {queixasApi.map((item) => (
-            <option key={item.id} value={item.label}>{item.label}</option>
-          ))}
-        </select>
-        <label htmlFor="doenca">Doenças Adulto</label>
-        <select name="doenca" id="doenca" onChange={(event) => this.handleChange(event)}>
-          <option value="selecione">Selecione</option>
-          {doencasApi.map((item) => (
-            <option key={item.id} value={item.label}>{item.label}</option>
-          ))}
-        </select>
-        <p>Selecionados:</p>
-        <label htmlFor="historico">Histórico da Moléstia</label>
-        <input
-          type="text"
-          name="historico"
-          placeholder="Digite..."
-          maxLength="1000"
-          minLength="10"
-          onChange={(event) => this.handleChange(event)}
-        />
-        <Link to="/">
-          <button type="button">Salvar</button>
-        </Link>
+      <div className="corpo cadastro">
+        <p className="anamnese">Anamnese</p>
+        <form className="form">
+          <label className="queixa" htmlFor="queixa">Queixa Principal</label>
+          <select name="queixa" id="queixa" onChange={(event) => this.handleChange(event)}>
+            <option value="" disabled selected>Selecione...</option>
+            {queixasApi.map((item) => (
+              <option key={item.id} value={item.label}>{item.label}</option>
+            ))}
+          </select>
+          <label className="doenca" htmlFor="doenca">Doenças Adulto</label>
+          <select name="doenca" id="doenca" onChange={(event) => this.handleChange(event)}>
+            <option value="" disabled selected>Selecione...</option>
+            {doencasApi.map((item) => (
+              <option key={item.id} value={item.label}>{item.label}</option>
+            ))}
+          </select>
+          <p className="selecionados">Selecionados:</p>
+          <label className="historico" htmlFor="historico">Histórico da Moléstia</label>
+          <input
+            className="input-historico"
+            type="text"
+            name="historico"
+            placeholder="Digite..."
+            maxLength="1000"
+            minLength="10"
+            required="required"
+            onChange={(event) => this.handleChange(event)}
+          />
+          <Link to="/">
+            <button className="btn" type="button">Salvar</button>
+          </Link>
+        </form>
       </div>
     );
   }

@@ -6,6 +6,7 @@ import Cadastro from './components/Cadastro';
 function App() {
   return (
     <Router>
+      <header>Prontuário Eletrônico</header>
       <Switch>
         <Route path="/cadastro" component={Cadastro} />
         <Route path="/" component={Listagem} />
