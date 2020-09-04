@@ -8,9 +8,12 @@ class Listagem extends React.Component {
       <div className="corpo listagem">
         <p className="text-none">Nenhum prontuário cadastrado.</p>
         <Link to="/cadastro">
-          <button className="btn" type="button">
-            Adicionar novo prontuário
-          </button>
+          <div className="container-btn">
+            <button className="btn" type="button">
+              Adicionar novo prontuário
+            </button>
+          </div>
+            
         </Link>
       </div>
     );
