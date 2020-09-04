@@ -1,13 +1,19 @@
-.corpo {
+body {
+  margin: auto;
+  height: 100vh;
   background-color: #F2F2F2;
+}
+
+.corpo {
   align-items: center;
   padding: 10px;
-  max-width: 250px;
-  height: 600px;
+  /* max-width: 250px;
+  height: 600px; */
 }
 
 header {
-  margin: 15px;
+  background-color: white;
+  padding: 5vh;
 }
 
 .text-none {
@@ -48,6 +54,7 @@ header {
   height: 80px;
   width: 230px;
   margin: 5px;
+  padding: 0;
 }
 
 .queixa, .doenca, .selecionados, .historico{

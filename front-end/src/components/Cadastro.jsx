@@ -50,7 +50,6 @@ class Cadastro extends React.Component {
       doencas,
       historico,
     };
-
     console.log(requisicao)
   }
 
@@ -76,7 +75,7 @@ class Cadastro extends React.Component {
             ))}
           </select>
           <p className="selecionados">Selecionados:</p>
-            <button>{this.handleChange}</button>
+            <div></div>
           <label className="historico" htmlFor="historico">Histórico da Moléstia</label>
           <input
             className="input-historico"
